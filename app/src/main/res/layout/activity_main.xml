@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardBackgroundColor="#1E1E1E"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="28dp">
+
+            <!-- AQI -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AQI"
+                android:textColor="#CCCCCC"
+                android:textSize="24sp"/>
+
+            <!-- AQI VALUE -->
+
+            <TextView
+                android:id="@+id/txtAQI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="94"
+                android:textColor="#FFFFFF"
+                android:textSize="90sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"/>
+
+            <!-- STATUS -->
+
+            <TextView
+                android:id="@+id/txtStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Good"
+                android:textColor="#00E676"
+                android:textStyle="bold"
+                android:textSize="34sp"
+                android:layout_marginTop="12dp"/>
+
+            <!-- DETAIL -->
+
+            <TextView
+                android:id="@+id/txtDanger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="อากาศดี ปลอดภัย"
+                android:textColor="#DDDDDD"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:layout_marginTop="10dp"/>
+
+            <!-- REFRESH BUTTON -->
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRefresh"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="Refresh AQI"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp"
+                android:layout_marginTop="28dp"
+                app:backgroundTint="#333333"
+                app:cornerRadius="16dp"/>
+
+            <!-- HISTORY BUTTON -->
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnHistory"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="AQI History"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp"
+                android:layout_marginTop="14dp"
+                app:backgroundTint="#5E35B1"
+                app:cornerRadius="16dp"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
