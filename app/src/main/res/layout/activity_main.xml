@@ -1,105 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#121212"
-    android:gravity="center"
     android:orientation="vertical"
     android:padding="16dp">
 
+    <!-- Header Section -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Air Quality Index"
+        android:textColor="#FFFFFF"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="24dp"/>
+
+    <!-- Main AQI Display Card -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
         app:cardBackgroundColor="#1E1E1E"
         app:cardCornerRadius="28dp"
-        app:cardElevation="10dp">
+        app:cardElevation="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="351dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="28dp">
-
-            <!-- AQI -->
+            android:padding="32dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="AQI"
-                android:textColor="#CCCCCC"
-                android:textSize="24sp"/>
-
-            <!-- AQI VALUE -->
+                android:letterSpacing="0.1"
+                android:text="Current AQI"
+                android:textColor="#AAAAAA"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/txtAQI"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:includeFontPadding="false"
                 android:text="94"
                 android:textColor="#FFFFFF"
-                android:textSize="90sp"
-                android:textStyle="bold"
-                android:layout_marginTop="8dp"/>
-
-            <!-- STATUS -->
+                android:textSize="100sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/txtStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:text="Good"
                 android:textColor="#00E676"
-                android:textStyle="bold"
-                android:textSize="34sp"
-                android:layout_marginTop="12dp"/>
-
-            <!-- DETAIL -->
+                android:textSize="36sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/txtDanger"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
                 android:text="อากาศดี ปลอดภัย"
                 android:textColor="#DDDDDD"
-                android:textSize="18sp"
-                android:gravity="center"
-                android:layout_marginTop="10dp"/>
-
-            <!-- REFRESH BUTTON -->
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnRefresh"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:text="Refresh AQI"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF"
-                android:textSize="17sp"
-                android:layout_marginTop="28dp"
-                app:backgroundTint="#333333"
-                app:cornerRadius="16dp"/>
-
-            <!-- HISTORY BUTTON -->
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnHistory"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:text="AQI History"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF"
-                android:textSize="17sp"
-                android:layout_marginTop="14dp"
-                app:backgroundTint="#5E35B1"
-                app:cornerRadius="16dp"/>
+                android:textSize="18sp" />
 
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
+
+    <!-- Spacer -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Actions Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="16dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="Refresh Data"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:backgroundTint="#333333"
+            app:cornerRadius="20dp"
+            app:icon="@android:drawable/stat_notify_sync"
+            android:layout_marginBottom="12dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnHistory"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="View History"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:backgroundTint="#6200EE"
+            app:cornerRadius="20dp"
+            app:icon="@android:drawable/ic_menu_recent_history"/>
+
+    </LinearLayout>
 
 </LinearLayout>

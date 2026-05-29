@@ -9,8 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.project_aqi.AQIHistory;
-
 import java.util.List;
 
 public class AQIHistoryAdapter
@@ -29,7 +27,7 @@ public class AQIHistoryAdapter
             int viewType) {
 
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(android.R.layout.simple_list_item_2,
+                .inflate(R.layout.item_history,
                         parent,
                         false);
 
@@ -43,33 +41,29 @@ public class AQIHistoryAdapter
 
         AQIHistory history = historyList.get(position);
 
-        holder.text1.setText(
-                "AQI: " + history.getAqi()
-                        + " - "
-                        + history.getStatus());
-
-        holder.text2.setText(
-                history.getDatetime());
+        holder.txtAQI.setText(String.valueOf(history.getAqi()));
+        holder.txtStatus.setText(history.getStatus());
+        holder.txtDate.setText(history.getDatetime());
 
         switch (history.getStatus()) {
 
             case "Good":
-                holder.text1.setTextColor(
+                holder.txtStatus.setTextColor(
                         Color.parseColor("#00E676"));
                 break;
 
             case "Moderate":
-                holder.text1.setTextColor(
+                holder.txtStatus.setTextColor(
                         Color.parseColor("#FFD600"));
                 break;
 
             case "Unhealthy":
-                holder.text1.setTextColor(
+                holder.txtStatus.setTextColor(
                         Color.parseColor("#FF5252"));
                 break;
 
             default:
-                holder.text1.setTextColor(
+                holder.txtStatus.setTextColor(
                         Color.parseColor("#EA80FC"));
                 break;
         }
@@ -83,16 +77,14 @@ public class AQIHistoryAdapter
     public static class ViewHolder
             extends RecyclerView.ViewHolder {
 
-        TextView text1, text2;
+        TextView txtAQI, txtStatus, txtDate;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            text1 = itemView.findViewById(
-                    android.R.id.text1);
-
-            text2 = itemView.findViewById(
-                    android.R.id.text2);
+            txtAQI = itemView.findViewById(R.id.txtAQI);
+            txtStatus = itemView.findViewById(R.id.txtStatus);
+            txtDate = itemView.findViewById(R.id.txtDate);
         }
     }
 }
