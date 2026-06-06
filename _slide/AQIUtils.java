@@ -2,31 +2,35 @@ package com.example.project_aqi;
 
 public class AQIUtils {
 
-    public static String getStatus(int aqi) {
-        if (aqi <= 50) {
+    public static String getStatus(int aqi){
+
+        if(aqi <= 50){
             return "Good";
-        } else if (aqi <= 100) {
+        }
+        else if(aqi <= 100){
             return "Moderate";
-        } else if (aqi <= 150) {
+        }
+        else if(aqi <= 150){
             return "Unhealthy";
-        } else if (aqi <= 200) {
-            return "Very Unhealthy";
-        } else {
+        }
+        else{
             return "Dangerous";
         }
     }
 
-    public static String getDanger(int aqi) {
-        if (aqi <= 50) {
-            return "คุณภาพอากาศดีมาก";
-        } else if (aqi <= 100) {
+    public static String getDanger(int aqi){
+
+        if(aqi <= 50){
+            return "อากาศดี ปลอดภัย";
+        }
+        else if(aqi <= 100){
             return "คุณภาพอากาศปานกลาง";
-        } else if (aqi <= 150) {
+        }
+        else if(aqi <= 150){
             return "เริ่มมีผลต่อสุขภาพ";
-        } else if (aqi <= 200) {
-            return "มีผลต่อสุขภาพมาก";
-        } else {
-            return "อันตรายต่อสุขภาพอย่างมาก";
+        }
+        else{
+            return "อันตรายต่อสุขภาพ";
         }
     }
 

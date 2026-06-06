@@ -4,13 +4,9 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,9 +27,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-    TextView txtAQI, txtStatusLarge, txtStatusBadge, txtDanger, txtRecommendation, txtWarning;
-    LinearLayout layoutWarning;
-    FrameLayout layoutCircle;
+    TextView txtAQI, txtStatus, txtDanger, txtRecommendation;
     MaterialButton btnHistory;
     DatabaseReference database;
 
@@ -45,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Firebase Setup
+        // Firebase Setup - ระบุ URL ของฐานข้อมูลเพื่อให้เชื่อมต่อกับโซนเอเชียได้ถูกต้อง
         database = FirebaseDatabase.getInstance("https://checkaqi-default-rtdb.asia-southeast1.firebasedatabase.app")
                 .getReference("current_aqi");
 
@@ -57,15 +51,9 @@ public class MainActivity extends AppCompatActivity {
 
         // TEXTVIEW
         txtAQI = findViewById(R.id.txtAQI);
-        txtStatusLarge = findViewById(R.id.txtStatusLarge);
-        txtStatusBadge = findViewById(R.id.txtStatusBadge);
+        txtStatus = findViewById(R.id.txtStatus);
         txtDanger = findViewById(R.id.txtDanger);
         txtRecommendation = findViewById(R.id.txtRecommendation);
-        txtWarning = findViewById(R.id.txtWarning);
-        
-        // LAYOUTS
-        layoutWarning = findViewById(R.id.layoutWarning);
-        layoutCircle = findViewById(R.id.layoutCircle);
 
         // BUTTON
         btnHistory = findViewById(R.id.btnHistory);
@@ -104,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 } else {
                     Log.d("FirebaseDB", "No data exists at current_aqi path");
+                    // สำหรับทดสอบ: ถ้าไม่มีข้อมูล ให้สร้างค่าเริ่มต้นเป็น 0
                     database.setValue(0);
                 }
             }
@@ -122,55 +111,27 @@ public class MainActivity extends AppCompatActivity {
         String recommendation = AQIUtils.getRecommendation(aqi);
 
         txtAQI.setText(String.valueOf(aqi));
-        txtStatusLarge.setText(status.toUpperCase());
-        txtStatusBadge.setText(status);
+        txtStatus.setText(status);
         txtDanger.setText(danger);
         txtRecommendation.setText(recommendation);
 
-        // กำหนดสี
-        int color;
+        // เปลี่ยนสีตาม AQI
         if (aqi <= 50) {
-            color = Color.parseColor("#00E676"); // Green
+            txtStatus.setTextColor(Color.parseColor("#00E676")); // Good
         } else if (aqi <= 100) {
-            color = Color.parseColor("#FFD600"); // Yellow
+            txtStatus.setTextColor(Color.parseColor("#FFD600")); // Moderate
         } else if (aqi <= 150) {
-            color = Color.parseColor("#FF5252"); // Red
+            txtStatus.setTextColor(Color.parseColor("#FF5252")); // Unhealthy
         } else {
-            color = Color.parseColor("#EA80FC"); // Purple
-        }
-
-        // อัปเดตสี UI
-        txtStatusLarge.setTextColor(color);
-        
-        // อัปเดตสีขอบวงกลม
-        GradientDrawable circleDrawable = (GradientDrawable) layoutCircle.getBackground();
-        circleDrawable.setStroke(dpToPx(8), color);
-
-        // อัปเดตสีพื้นหลัง Badge
-        GradientDrawable badgeDrawable = (GradientDrawable) txtStatusBadge.getBackground();
-        badgeDrawable.setColor(color);
-
-        // Warning Bar
-        if (aqi > 100) {
-            layoutWarning.setVisibility(View.VISIBLE);
-            txtWarning.setText("AQI Warning • AQI สูง: " + aqi);
-        } else {
-            layoutWarning.setVisibility(View.GONE);
-        }
-
-        // Notification
-        if (aqi > 150) {
+            txtStatus.setTextColor(Color.parseColor("#EA80FC")); // Dangerous
             NotificationHelper.showNotification(this, aqi);
         }
 
-        // บันทึกประวัติ
+        // บันทึกเวลาปัจจุบัน
         String currentTime = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault()).format(new Date());
+        
+        // บันทึกประวัติ
         historyList.add(new AQIHistory(aqi, status, currentTime));
-    }
-
-    private int dpToPx(int dp) {
-        float density = getResources().getDisplayMetrics().density;
-        return Math.round((float) dp * density);
     }
 
     // Android 13 Notification Permission
