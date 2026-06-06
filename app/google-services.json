@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "150112585449",
+    "project_id": "checkaqi",
+    "storage_bucket": "checkaqi.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:150112585449:android:7e39f70db14dd052a0d278",
+        "android_client_info": {
+          "package_name": "com.example.project_aqi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDq2rJfaZJFofy_A6VH5L1S_HjHuhzCV0s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
