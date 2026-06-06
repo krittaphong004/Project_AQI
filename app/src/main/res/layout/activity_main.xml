@@ -9,30 +9,32 @@
     android:padding="16dp">
 
     <!-- Header Section -->
+
+    <!-- Main AQI Display Card -->
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="16dp"
         android:text="Air Quality Index"
         android:textColor="#FFFFFF"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="24dp"/>
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
-    <!-- Main AQI Display Card -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="#1E1E1E"
-        app:cardCornerRadius="28dp"
-        app:cardElevation="8dp">
+        app:cardCornerRadius="24dp"
+        app:cardElevation="6dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="351dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="32dp">
+            android:padding="24dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -40,37 +42,72 @@
                 android:letterSpacing="0.1"
                 android:text="Current AQI"
                 android:textColor="#AAAAAA"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/txtAQI"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:includeFontPadding="false"
-                android:text="94"
+                android:text="--"
                 android:textColor="#FFFFFF"
-                android:textSize="100sp"
+                android:textSize="80sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/txtStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Good"
+                android:layout_marginTop="2dp"
+                android:text="Wait..."
                 android:textColor="#00E676"
-                android:textSize="36sp"
+                android:textSize="28sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/txtDanger"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="8dp"
                 android:gravity="center"
-                android:text="อากาศดี ปลอดภัย"
+                android:text="กำลังดึงข้อมูล..."
                 android:textColor="#DDDDDD"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardBackgroundColor="#2A2A2A"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="คำแนะนำสุขภาพ"
+                android:textColor="#AAAAAA"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/txtRecommendation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="--"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:lineSpacingExtra="4dp" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -86,31 +123,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginBottom="16dp">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnRefresh"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:text="Refresh Data"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            app:backgroundTint="#333333"
-            app:cornerRadius="20dp"
-            app:icon="@android:drawable/stat_notify_sync"
-            android:layout_marginBottom="12dp"/>
+        android:layout_marginBottom="8dp">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnHistory"
             android:layout_width="match_parent"
-            android:layout_height="64dp"
+            android:layout_height="56dp"
             android:text="View History"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
-            android:textSize="18sp"
+            android:textSize="16sp"
             app:backgroundTint="#6200EE"
-            app:cornerRadius="20dp"
+            app:cornerRadius="16dp"
             app:icon="@android:drawable/ic_menu_recent_history"/>
 
     </LinearLayout>
